@@ -82,6 +82,21 @@
         </div>
       </div>
 
+      <!-- Busca por localização (Google) -->
+      <div class="geo">
+        <button id="btn-geo" class="btn" type="button">Usar minha localização</button>
+        <div>
+          <label for="f-raio">Raio de busca</label>
+          <select id="f-raio">
+            <option value="2">2 km</option>
+            <option value="5" selected>5 km</option>
+            <option value="10">10 km</option>
+            <option value="20">20 km</option>
+          </select>
+        </div>
+        <p id="geo-status" class="geo-status" aria-live="polite"></p>
+      </div>
+
       <!-- Cards preenchidos pelo JavaScript -->
       <div id="lista" class="units" aria-live="polite"></div>
     </section>
@@ -167,7 +182,8 @@
     </div>
   </footer>
 
-  <!-- Script (etapa final) -->
+  <!-- Scripts: config (chave do Google) e lógica do site -->
+  <script src="js/config.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

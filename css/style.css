@@ -300,6 +300,19 @@
     color: var(--muted);
   }
   
+  /* Busca por localização */
+  .geo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px 16px;
+    margin-bottom: 18px;
+  }
+  .geo > div { min-width: 140px; }
+  .geo-status { flex: 1 1 100%; margin: 0; color: var(--muted); }
+  .geo-status.erro { color: var(--warn); font-weight: 700; }
+  .btn:disabled { opacity: .6; cursor: wait; }
+  
   /* ---------- 9. Formulário de agendamento ---------- */
   .aviso {
     margin-bottom: 16px;
