@@ -1,0 +1,350 @@
+/* =========================================================
+   Saúde Fácil — style.css
+   Índice:
+   1. Variáveis (cores e tema claro/escuro)
+   2. Reset e base
+   3. Layout geral
+   4. Cabeçalho
+   5. Botões
+   6. Hero
+   7. Como funciona
+   8. Unidades e filtros
+   9. Formulário de agendamento
+   10. Rodapé
+   11. Responsivo e acessibilidade
+   ========================================================= */
+
+/* ---------- 1. Variáveis ---------- */
+:root {
+    --bg: #f3f8f6;
+    --surface: #ffffff;
+    --ink: #12302b;
+    --muted: #4f6b65;
+    --line: #cfe0db;
+    --brand: #0b7a6b;
+    --brand-ink: #ffffff;
+    --accent: #1d4e89;
+    --warn: #b4540a;
+    --ok: #17794a;
+  
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* Tema escuro automático (segue o sistema do usuário) */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1b19;
+      --surface: #15272a;
+      --ink: #e6f2ef;
+      --muted: #9bb5ae;
+      --line: #26403d;
+      --brand: #3fc2ad;
+      --brand-ink: #08201c;
+      --accent: #7fb2ee;
+      --warn: #f0a35e;
+      --ok: #58cf93;
+      color-scheme: dark;
+    }
+  }
+  
+  /* Tema escuro forçado (útil se criarem um botão de tema depois) */
+  :root[data-theme="dark"] {
+    --bg: #0e1b19;
+    --surface: #15272a;
+    --ink: #e6f2ef;
+    --muted: #9bb5ae;
+    --line: #26403d;
+    --brand: #3fc2ad;
+    --brand-ink: #08201c;
+    --accent: #7fb2ee;
+    --warn: #f0a35e;
+    --ok: #58cf93;
+    color-scheme: dark;
+  }
+  
+  /* ---------- 2. Reset e base ---------- */
+  html {
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px);
+    scroll-behavior: smooth;
+  }
+  
+  *, *::before, *::after { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.55 "Atkinson Hyperlegible", system-ui, sans-serif;
+  }
+  
+  h1, h2, h3 {
+    font-family: Fraunces, Georgia, serif;
+    line-height: 1.15;
+    margin: 0 0 .5em;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 3.3rem); }
+  h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h3 { font-size: 1.15rem; }
+  
+  a { color: var(--accent); }
+  
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  
+  [hidden] { display: none !important; }
+  
+  /* ---------- 3. Layout geral ---------- */
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  section { padding: 40px 0; }
+  
+  /* ---------- 4. Cabeçalho ---------- */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+  }
+  
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Fraunces, serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  
+  .logo b {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+  
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a { color: var(--ink); font-weight: 700; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+  
+  /* ---------- 5. Botões ---------- */
+  .btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font: 700 1rem "Atkinson Hyperlegible", sans-serif;
+    background: var(--brand);
+    color: var(--brand-ink);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  
+  .btn.alt {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--line);
+  }
+  
+  /* ---------- 6. Hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+    padding-top: 56px;
+    padding-bottom: 40px;
+  }
+  
+  .hero p {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+  
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  
+  /* Comprovante de exemplo */
+  .ticket {
+    background: var(--surface);
+    border: 2px dashed var(--brand);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  .ticket dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 16px;
+    margin: 0;
+  }
+  .ticket dt { color: var(--muted); }
+  .ticket dd { margin: 0; font-weight: 700; }
+  
+  .ticket .tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 2px 12px;
+    border-radius: 99px;
+    background: var(--ok);
+    color: #fff;
+    font-size: .9rem;
+  }
+  
+  /* ---------- 7. Como funciona ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+    counter-reset: passo;
+  }
+  
+  .steps li {
+    counter-increment: passo;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  .steps li::before {
+    content: counter(passo);
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-weight: 700;
+  }
+  
+  .steps p { margin: 0; color: var(--muted); }
+  
+  /* ---------- 8. Unidades e filtros ---------- */
+  label { display: block; margin-bottom: 4px; font-weight: 700; }
+  
+  input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+  }
+  
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+  .filters > div { flex: 1 1 200px; }
+  
+  .units {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+  }
+  
+  .unit {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .unit p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .unit .btn { margin-top: auto; text-align: center; }
+  
+  .badge {
+    align-self: flex-start;
+    padding: 2px 10px;
+    border: 1.5px solid currentColor;
+    border-radius: 6px;
+    font-size: .85rem;
+    font-weight: 700;
+  }
+  .badge.upa { color: var(--warn); }
+  .badge.ubs { color: var(--ok); }
+  
+  .empty {
+    padding: 20px;
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    color: var(--muted);
+  }
+  
+  /* ---------- 9. Formulário de agendamento ---------- */
+  .aviso {
+    margin-bottom: 16px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border-left: 6px solid var(--warn);
+    border-radius: 8px;
+  }
+  
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .form .full { grid-column: 1 / -1; }
+  
+  .hint { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+  
+  .msg {
+    margin-top: 16px;
+    padding: 16px;
+    background: var(--surface);
+    border: 2px solid var(--ok);
+    border-radius: 12px;
+  }
+  
+  /* ---------- 10. Rodapé ---------- */
+  footer {
+    padding: 28px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .95rem;
+  }
+  
+  /* ---------- 11. Responsivo e acessibilidade ---------- */
+  @media (max-width: 760px) {
+    .hero, .steps, .form { grid-template-columns: 1fr; }
+    .hero { padding-top: 32px; }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
