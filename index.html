@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Saúde Fácil: agende atendimento em UPAs e postos de saúde pública sem enfrentar fila.">
+  <title>Saúde Fácil — Agendamento em UPAs e postos de saúde</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+  <!-- Estilos (próxima etapa) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= CABEÇALHO ================= -->
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="#inicio"><b>+</b> Saúde Fácil</a>
+      <nav aria-label="Principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#unidades">Unidades</a>
+        <a href="#agendar">Agendar</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ================= HERO ================= -->
+    <div class="wrap hero">
+      <div>
+        <h1>Agende seu atendimento sem enfrentar fila.</h1>
+        <p>Escolha uma unidade de saúde pública perto de você, veja os horários livres e confirme em poucos minutos.</p>
+        <div class="cta">
+          <a class="btn" href="#agendar">Agendar atendimento</a>
+          <a class="btn alt" href="#unidades">Ver unidades</a>
+        </div>
+      </div>
+
+      <div class="ticket" aria-label="Exemplo de comprovante">
+        <span class="tag">Confirmado</span>
+        <dl>
+          <dt>Unidade</dt><dd>UBS Vila Nova</dd>
+          <dt>Serviço</dt><dd>Clínica geral</dd>
+          <dt>Data</dt><dd>Qui, 22/10 às 09:30</dd>
+          <dt>Código</dt><dd>SF-48213</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- ================= COMO FUNCIONA ================= -->
+    <section id="como-funciona" class="wrap">
+      <h2>Como funciona</h2>
+      <ol class="steps">
+        <li><h3>Escolha a unidade</h3><p>Filtre por tipo (UBS ou UPA) e por bairro.</p></li>
+        <li><h3>Selecione dia e horário</h3><p>Veja só as vagas disponíveis para o serviço que você precisa.</p></li>
+        <li><h3>Receba o comprovante</h3><p>Guarde o código e apresente na recepção com seu documento.</p></li>
+      </ol>
+    </section>
+
+    <!-- ================= UNIDADES ================= -->
+    <section id="unidades" class="wrap">
+      <h2>Unidades de saúde</h2>
+
+      <div class="filters">
+        <div>
+          <label for="f-tipo">Tipo de unidade</label>
+          <select id="f-tipo">
+            <option value="">Todas</option>
+            <option value="UBS">Posto de saúde (UBS)</option>
+            <option value="UPA">Pronto atendimento (UPA)</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-busca">Bairro ou nome</label>
+          <input id="f-busca" type="search" placeholder="Ex.: Centro">
+        </div>
+      </div>
+
+      <!-- Cards preenchidos pelo JavaScript -->
+      <div id="lista" class="units" aria-live="polite"></div>
+    </section>
+
+    <!-- ================= AGENDAMENTO ================= -->
+    <section id="agendar" class="wrap">
+      <h2>Agendar atendimento</h2>
+
+      <div class="aviso">
+        <strong>Emergência?</strong> Em casos graves, ligue 192 (SAMU) ou vá direto à UPA mais próxima. Este agendamento é para atendimentos não urgentes.
+      </div>
+
+      <form id="form" class="form" novalidate>
+        <div class="full">
+          <label for="unidade">Unidade</label>
+          <select id="unidade" required></select>
+        </div>
+
+        <div>
+          <label for="servico">Serviço</label>
+          <select id="servico" required>
+            <option value="">Selecione</option>
+            <option>Clínica geral</option>
+            <option>Pediatria</option>
+            <option>Enfermagem (curativo, vacina)</option>
+            <option>Odontologia</option>
+            <option>Ginecologia</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="data">Data</label>
+          <input id="data" type="date" required>
+        </div>
+
+        <div>
+          <label for="hora">Horário</label>
+          <select id="hora" required>
+            <option value="">Selecione</option>
+            <option>08:00</option>
+            <option>08:30</option>
+            <option>09:00</option>
+            <option>09:30</option>
+            <option>10:00</option>
+            <option>14:00</option>
+            <option>14:30</option>
+            <option>15:00</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="nome">Nome completo</label>
+          <input id="nome" required autocomplete="name">
+        </div>
+
+        <div>
+          <label for="cartao">Cartão SUS (CNS)</label>
+          <input id="cartao" inputmode="numeric" maxlength="15" placeholder="15 dígitos" required>
+          <p class="hint">Apenas números.</p>
+        </div>
+
+        <div>
+          <label for="tel">Telefone com DDD</label>
+          <input id="tel" type="tel" autocomplete="tel" required>
+        </div>
+
+        <div class="full">
+          <button class="btn" type="submit">Confirmar agendamento</button>
+        </div>
+      </form>
+
+      <!-- Mensagem de confirmação/erro (preenchida pelo JavaScript) -->
+      <div id="resultado" class="msg" hidden role="status"></div>
+    </section>
+
+  </main>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer id="contato">
+    <div class="wrap">
+      <strong>Saúde Fácil</strong> — projeto acadêmico. Os dados exibidos são fictícios e não representam unidades reais.<br>
+      Contato: contato@saudefacil.exemplo · Equipe: [nomes do grupo] · [Nome da faculdade]
+    </div>
+  </footer>
+
+  <!-- Script (etapa final) -->
+  <script src="js/script.js"></script>
+</body>
+</html>
