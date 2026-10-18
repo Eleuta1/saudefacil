@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Meus agendamentos — Saúde Fácil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="index.html"><b>+</b> Saúde Fácil</a>
+      <nav aria-label="Principal">
+        <a href="index.html#unidades">Unidades</a>
+        <a href="index.html#agendar">Agendar</a>
+        <a href="minha-conta.html" id="nav-conta">Minha conta</a>
+        <a href="#" id="nav-sair" hidden>Sair</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap conta">
+    <h1 id="ola">Meus agendamentos</h1>
+    <p class="perfil" id="perfil"></p>
+    <a class="btn" href="index.html#agendar">Novo agendamento</a>
+
+    <section aria-labelledby="t-prox">
+      <h2 id="t-prox">Próximos</h2>
+      <div id="proximos" class="agenda"></div>
+    </section>
+
+    <section aria-labelledby="t-hist">
+      <h2 id="t-hist">Histórico</h2>
+      <div id="historico" class="agenda"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><strong>Saúde Fácil</strong> — projeto acadêmico. Os dados ficam salvos apenas neste navegador.</div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/conta.js"></script>
+</body>
+</html>

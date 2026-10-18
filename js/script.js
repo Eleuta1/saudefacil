@@ -178,6 +178,14 @@
      const out = $("resultado");
      out.hidden = false;
    
+     // Só confirma com o cliente logado
+     const usr = SF.usuario();
+     if (!usr) {
+       out.style.borderColor = "var(--warn)";
+       out.innerHTML = 'Para confirmar, <a href="login.html?next=index.html%23agendar">entre na sua conta</a> ou crie uma.';
+       return;
+     }
+   
      const campos = ["unidade", "servico", "data", "hora", "nome", "cartao", "tel"];
      const vazio = campos.find(c => !$(c).value.trim());
      if (vazio) {
@@ -195,15 +203,31 @@
    
      const u = unidades.find(x => String(x.id) === $("unidade").value);
      const [a, m, d] = $("data").value.split("-");
+     const codigo = SF.agendar({
+       usuario: usr.email, unidadeId: String(u.id), unidade: u.nome, endereco: u.end,
+       servico: $("servico").value, data: $("data").value, hora: $("hora").value
+     });
      out.style.borderColor = "var(--ok)";
      out.innerHTML = `<strong>Agendamento confirmado, ${escapar($("nome").value.split(" ")[0])}.</strong><br>
        ${escapar($("servico").value)} em ${escapar(u.nome)}, dia ${d}/${m}/${a} às ${escapar($("hora").value)}.<br>
-       Código: <strong>SF-${Math.floor(10000 + Math.random() * 90000)}</strong>.
-       Leve um documento com foto e o Cartão SUS.`;
+       Código: <strong>${codigo}</strong>.
+       Leve um documento com foto e o Cartão SUS.
+       <a href="minha-conta.html">Ver meus agendamentos</a>`;
      out.scrollIntoView({ behavior: "smooth", block: "nearest" });
      e.target.reset();
+     preencherDadosUsuario();
    });
+   
+   // Preenche nome, Cartão SUS e telefone do cliente logado
+   function preencherDadosUsuario() {
+     const u = SF.usuario();
+     if (!u) return;
+     $("nome").value = u.nome;
+     $("cartao").value = u.cartao;
+     $("tel").value = u.tel;
+   }
    
    /* ---------- Início ---------- */
    render();
    preencherSelect();
+   preencherDadosUsuario();

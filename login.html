@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Entrar — Saúde Fácil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="index.html"><b>+</b> Saúde Fácil</a>
+      <nav aria-label="Principal">
+        <a href="index.html#unidades">Unidades</a>
+        <a href="index.html#agendar">Agendar</a>
+        <a href="login.html" id="nav-conta">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap auth">
+    <div class="auth-card">
+      <h1>Acesse sua conta</h1>
+
+      <div class="abas" role="tablist">
+        <button type="button" id="aba-entrar" role="tab" aria-selected="true">Entrar</button>
+        <button type="button" id="aba-criar" role="tab" aria-selected="false">Criar conta</button>
+      </div>
+
+      <!-- Entrar -->
+      <form id="form-entrar" novalidate>
+        <div><label for="e-email">E-mail</label><input id="e-email" type="email" autocomplete="email" required></div>
+        <div><label for="e-senha">Senha</label><input id="e-senha" type="password" autocomplete="current-password" required></div>
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+
+      <!-- Criar conta -->
+      <form id="form-criar" novalidate hidden>
+        <div><label for="c-nome">Nome completo</label><input id="c-nome" autocomplete="name" required></div>
+        <div><label for="c-email">E-mail</label><input id="c-email" type="email" autocomplete="email" required></div>
+        <div><label for="c-cartao">Cartão SUS (CNS)</label><input id="c-cartao" inputmode="numeric" maxlength="15" placeholder="15 dígitos" required></div>
+        <div><label for="c-tel">Telefone com DDD</label><input id="c-tel" type="tel" autocomplete="tel" required></div>
+        <div><label for="c-senha">Senha</label><input id="c-senha" type="password" autocomplete="new-password" required>
+          <p class="hint">Mínimo de 6 caracteres.</p></div>
+        <div><label for="c-senha2">Repita a senha</label><input id="c-senha2" type="password" autocomplete="new-password" required></div>
+        <button class="btn" type="submit">Criar conta</button>
+      </form>
+
+      <p id="auth-msg" class="auth-msg" role="alert" hidden></p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap"><strong>Saúde Fácil</strong> — projeto acadêmico. Contas e dados são salvos apenas neste navegador.</div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

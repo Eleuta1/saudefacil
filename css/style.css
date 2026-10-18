@@ -361,3 +361,59 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
+  
+  /* ---------- 12. Login e área do cliente ---------- */
+  .auth { padding-top: 40px; padding-bottom: 40px; }
+  .auth-card {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+  .auth-card h1 { font-size: 1.8rem; }
+  .auth-card form { display: grid; gap: 14px; }
+  
+  .abas { display: flex; gap: 6px; margin-bottom: 18px; border-bottom: 2px solid var(--line); }
+  .abas button {
+    flex: 1;
+    padding: 10px;
+    border: 0;
+    border-bottom: 4px solid transparent;
+    margin-bottom: -2px;
+    background: none;
+    color: var(--muted);
+    font: 700 1rem "Atkinson Hyperlegible", sans-serif;
+    cursor: pointer;
+  }
+  .abas button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--brand); }
+  
+  .auth-msg { margin: 14px 0 0; padding: 12px; border-left: 6px solid var(--warn); border-radius: 8px; background: var(--bg); }
+  
+  .conta { padding-top: 40px; padding-bottom: 20px; }
+  .perfil { margin: 0 0 16px; color: var(--muted); }
+  
+  .agenda { display: grid; gap: 12px; }
+  .ag {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left-width: 6px;
+    border-radius: 12px;
+  }
+  .ag.proximo { border-left-color: var(--ok); }
+  .ag.realizado { border-left-color: var(--accent); }
+  .ag.cancelado { border-left-color: var(--warn); }
+  .ag p { margin: 0; color: var(--muted); }
+  .ag h3 { margin: 6px 0; }
+  
+  .status { font-size: .85rem; font-weight: 700; }
+  .status.proximo { color: var(--ok); }
+  .status.realizado { color: var(--accent); }
+  .status.cancelado { color: var(--warn); }
