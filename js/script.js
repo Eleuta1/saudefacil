@@ -202,6 +202,22 @@
      }
    
      const u = unidades.find(x => String(x.id) === $("unidade").value);
+     if (!u) {
+       out.style.borderColor = "var(--warn)";
+       out.textContent = "Selecione uma unidade válida.";
+       $("unidade").focus();
+       return;
+     }
+     const conflito = SF.todosAgendamentos().some(a =>
+       a.unidadeId === String(u.id) && a.data === $("data").value && a.hora === $("hora").value &&
+       !["cancelado", "faltou"].includes(a.status)
+     );
+     if (conflito) {
+       out.style.borderColor = "var(--warn)";
+       out.textContent = "Esse horário já está ocupado nesta unidade. Escolha outro horário.";
+       $("hora").focus();
+       return;
+     }
      const [a, m, d] = $("data").value.split("-");
      const codigo = SF.agendar({
        usuario: usr.email, unidadeId: String(u.id), unidade: u.nome, endereco: u.end,

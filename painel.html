@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Painel administrativo da equipe Saúde Fácil.">
+  <title>Painel da equipe — Saúde Fácil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/painel.css">
+</head>
+<body class="crm-page">
+  <header class="crm-top">
+    <div class="wrap bar">
+      <a class="logo" href="index.html"><b>+</b> Saúde Fácil <span class="crm-brand-suffix">/ Equipe</span></a>
+      <nav aria-label="Navegação do painel">
+        <a href="index.html">Site do paciente</a>
+        <button class="btn alt crm-theme" id="crm-theme" type="button">Alternar tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap crm-shell">
+    <section id="crm-login" class="crm-login" aria-labelledby="crm-login-title">
+      <div class="crm-login-card">
+        <span class="crm-eyebrow">Área restrita</span>
+        <h1 id="crm-login-title">Painel da equipe</h1>
+        <p class="crm-muted">Entre com uma conta administrativa ou de atendimento.</p>
+        <form id="crm-login-form">
+          <label for="crm-email">E-mail</label>
+          <input id="crm-email" type="email" autocomplete="username" required>
+          <label for="crm-password">Senha</label>
+          <input id="crm-password" type="password" autocomplete="current-password" required>
+          <p id="crm-login-error" class="crm-error" role="alert"></p>
+          <button class="btn crm-submit" type="submit">Entrar no painel</button>
+        </form>
+        <div class="crm-demo-accounts">
+          <strong>Contas de demonstração</strong>
+          <button type="button" data-demo-email="admin@sf.com" data-demo-password="admin123"><span>Administrador</span><small>admin@sf.com · admin123</small></button>
+          <button type="button" data-demo-email="gestor@sf.com" data-demo-password="gestor123"><span>Gestor de unidade</span><small>gestor@sf.com · gestor123</small></button>
+          <button type="button" data-demo-email="atendente@sf.com" data-demo-password="atend123"><span>Atendente</span><small>atendente@sf.com · atend123</small></button>
+        </div>
+      </div>
+      <p class="crm-warning"><strong>Ambiente acadêmico:</strong> os dados são fictícios e ficam no armazenamento local do navegador. Não utilize informações reais de pacientes.</p>
+    </section>
+
+    <section id="crm-dashboard" class="crm-dashboard" hidden>
+      <aside class="crm-sidebar">
+        <div class="crm-sidebar-heading"><span class="crm-eyebrow">Gestão</span><strong>Menu principal</strong></div>
+        <nav id="crm-nav" aria-label="Seções do painel"></nav>
+        <div class="crm-session">
+          <strong id="crm-user-name"></strong>
+          <span id="crm-user-role"></span>
+          <span id="crm-user-unit"></span>
+          <button class="btn alt crm-logout" id="crm-logout" type="button">Sair</button>
+        </div>
+      </aside>
+      <section id="crm-main" class="crm-main" aria-live="polite"></section>
+    </section>
+  </main>
+
+  <dialog id="crm-modal" class="crm-modal">
+    <form id="crm-modal-form" method="dialog">
+      <div id="crm-modal-content"></div>
+    </form>
+  </dialog>
+  <div id="crm-toast" class="crm-toast" role="status" aria-live="polite"></div>
+
+  <footer class="crm-footer">
+    <div class="wrap">Saúde Fácil — projeto acadêmico · Painel demonstrativo, sem conexão com um servidor.</div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/painel.js"></script>
+</body>
+</html>

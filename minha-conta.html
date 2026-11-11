@@ -17,6 +17,7 @@
         <a href="index.html#unidades">Unidades</a>
         <a href="index.html#agendar">Agendar</a>
         <a href="minha-conta.html" id="nav-conta">Minha conta</a>
+        <a href="painel.html">Equipe</a>
         <a href="#" id="nav-sair" hidden>Sair</a>
       </nav>
     </div>
@@ -25,7 +26,21 @@
   <main class="wrap conta">
     <h1 id="ola">Meus agendamentos</h1>
     <p class="perfil" id="perfil"></p>
-    <a class="btn" href="index.html#agendar">Novo agendamento</a>
+    <div class="perfil-acoes">
+      <a class="btn" href="index.html#agendar">Novo agendamento</a>
+      <button class="btn alt" id="btn-editar-perfil" type="button">Editar perfil</button>
+    </div>
+    <form id="perfil-form" class="perfil-edit" hidden>
+      <h2>Editar meus dados</h2>
+      <div class="perfil-edit-grid">
+        <div><label for="perfil-nome">Nome completo</label><input id="perfil-nome" required></div>
+        <div><label for="perfil-tel">Telefone com DDD</label><input id="perfil-tel" type="tel" required></div>
+        <div><label for="perfil-cartao">Cartão SUS (CNS)</label><input id="perfil-cartao" inputmode="numeric" maxlength="15" required></div>
+        <div><label for="perfil-senha">Nova senha (opcional)</label><input id="perfil-senha" type="password" autocomplete="new-password"></div>
+      </div>
+      <p id="perfil-msg" class="auth-msg" role="alert" hidden></p>
+      <div class="perfil-acoes"><button class="btn" type="submit">Salvar alterações</button><button class="btn alt" id="btn-cancelar-edicao" type="button">Cancelar</button></div>
+    </form>
 
     <section aria-labelledby="t-prox">
       <h2 id="t-prox">Próximos</h2>

@@ -417,3 +417,10 @@
   .status.proximo { color: var(--ok); }
   .status.realizado { color: var(--accent); }
   .status.cancelado { color: var(--warn); }
+/* Edição de perfil do paciente */
+.perfil-acoes { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 20px; }
+.perfil-edit { margin: 16px 0 24px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.perfil-edit h2 { margin-bottom: 12px; }
+.perfil-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.perfil-edit-grid input { margin-top: 4px; }
+@media (max-width: 640px) { .perfil-edit-grid { grid-template-columns: 1fr; } }
